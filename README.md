@@ -6,7 +6,7 @@
 
 ## Objetivo
 
-Exemplo simples e didático de como rodar uma aplicação **Node.js** dentro de um container **Docker** para complementar a explicação da apresentação sovre VM.
+Exemplo simples e didático de como rodar uma aplicação **Node.js** dentro de um container **Docker** para complementar a explicação da apresentação sobre VM.
 
 ## Instruções ParaConstrução dos Dockers
 
