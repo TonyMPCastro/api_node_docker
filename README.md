@@ -4,27 +4,27 @@
 
 Exemplo simples e didático de como rodar uma aplicação **Node.js** dentro de um container **Docker** para complementar a explicação da apresentação sobre VM.
 
-## Instruções ParaConstrução dos Dockers
+## 🚀  📋 Instruções Para a Construção dos Containers
 
-1 - ICrie uma REDE para conectar os Containers --name da rede - REDE
+1 - ⚙️ Crie uma REDE para conectar os Containers --name da rede - REDE
 
 ``` 
 ocker network create REDE 
 ```
 
-2 - Crie um VOLUME para permanercer os dados do mysql mesmo se o Container for destruido
+2 - 📦 Crie um VOLUME para permanercer os dados do mysql mesmo se o Container for destruido
 
 ```
 docker volume create VOL1
 ```
 
-3 - Crie um Container para o MYSQL colonaco ele na REDE e acessando o VOLUME e expondo a porta 3306, definindo uma seha para o root e uma base de dados
+3 - 🛠️ Crie um Container para o MYSQL colonaco ele na REDE e acessando o VOLUME e expondo a porta 3306, definindo uma seha para o root e uma base de dados
 
 ```
 docker run -d -P --name db_mysql -p 3306:3306 -v VOL1:/var/lib/mysql -h db --network REDE -e MYSQL_ROOT_PASSWORD=123 -e MYSQL_DATABASE=myDB mysql
 ```
 
-4 - Cria um Container para o PHPMYADMIN colocando ele na REDE e conectando no Container do mysql, expondo a porta 8080
+4 - 🛠️ Cria um Container para o PHPMYADMIN colocando ele na REDE e conectando no Container do mysql, expondo a porta 8080
 
 ```
 docker run -d -P --name admin_mysql -h myadmin --network REDE -e PMA_HOST=db -p 8080:80 phpmyadmin
@@ -48,12 +48,15 @@ docker logs my_node
 ```
 
 
-6- Adiciona o Container my_node na REDE -  já pode acessar a url (http://localhost:3000)
+6 - 🛠️ Adiciona o Container my_node na REDE -  já pode acessar a url (http://localhost:3000)
 
 ```
 docker network connect REDE my_node
 ```
 
-## Autores
+## ✒️ Autores
 
-- **Antonio M P Castro** - _Initial work_ 
+* **AMPC** - *Documentação - Dev - Engenheiro* - [AMPC](https://github.com/TonyMPCastro)
+* **Nerval** - *Documentação - Dev - Engenheiro* - [PERFIL]()
+* **Guilherme** - *Documentação -Dev - Engenheiro* - [PERFIL]()
+
