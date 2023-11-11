@@ -9,7 +9,7 @@ Exemplo simples e didático de como rodar uma aplicação **Node.js** dentro de 
 1 - ⚙️ Crie uma REDE para conectar os Containers --name da rede - REDE
 
 ``` 
-ocker network create REDE 
+docker network create REDE 
 ```
 
 2 - 📦 Crie um VOLUME para permanercer os dados do mysql mesmo se o Container for destruido
