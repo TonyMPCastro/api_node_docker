@@ -27,7 +27,7 @@ docker run -d -P --name db_mysql -p 3308:3306 -v VOL1:/var/lib/mysql -h db --net
 4 - 🛠️ Cria um Container para o PHPMYADMIN colocando ele na REDE e conectando no Container do mysql, expondo a porta 8080
 
 ```
-docker run -d -P --name admin_mysql -h myadmin --network REDE -e PMA_HOST=db -e PMA_PORT=3308 -p 8080:80 phpmyadmin
+docker run -d -P --name admin_mysql -h myadmin --network REDE --link db_mysql:db -p 8080:80 phpmyadmin
 ```
 
 5 - Rode o comando dentro da pasta cd ./api_node_docker, vai ser criada uma imagem do diretorio atual e intanciado um Container Node, expondo a porta 3000
