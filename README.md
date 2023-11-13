@@ -21,13 +21,13 @@ docker volume create VOL1
 3 - 🛠️ Crie um Container para o MYSQL colonaco ele na REDE e acessando o VOLUME e expondo a porta 3306, definindo uma seha para o root e uma base de dados
 
 ```
-docker run -d -P --name db_mysql -p 3306:3306 -v VOL1:/var/lib/mysql -h db --network REDE -e MYSQL_ROOT_PASSWORD=123 -e MYSQL_DATABASE=myDB mysql
+docker run -d -P --name db_mysql -p 3308:3306 -v VOL1:/var/lib/mysql -h db --network REDE -e MYSQL_ROOT_PASSWORD=123 -e MYSQL_DATABASE=myDB mysql
 ```
 
 4 - 🛠️ Cria um Container para o PHPMYADMIN colocando ele na REDE e conectando no Container do mysql, expondo a porta 8080
 
 ```
-docker run -d -P --name admin_mysql -h myadmin --network REDE -e PMA_HOST=db -p 8080:80 phpmyadmin
+docker run -d -P --name admin_mysql -h myadmin --network REDE -e PMA_HOST=db -e PMA_PORT=3308 -p 8080:80 phpmyadmin
 ```
 
 5 - Rode o comando dentro da pasta cd ./api_node_docker, vai ser criada uma imagem do diretorio atual e intanciado um Container Node, expondo a porta 3000
