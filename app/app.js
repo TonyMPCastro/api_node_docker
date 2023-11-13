@@ -5,6 +5,8 @@ let connectionRequest = require('./connectionRequest')
 const app = express();
 const port = process.env.PORT || 3033;
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
@@ -30,10 +32,20 @@ app.get("/", (req, res, next) => {
 // Rota para obter a lista de produtos
 app.get('/logs', (req, res) => {
 
-  connection = connectionRequest()
-  const query = 'SELECT * FROM logs';
+  const dataParametro = req.query.data;
 
-  connection.query(query, (err, results) => {
+  connection = connectionRequest();
+
+  let  query = 'SELECT * FROM logs where 1';
+
+    // Adicionar condição baseada no parâmetro, se estiver presente
+    if (dataParametro) {
+      // Adicionar condição para a coluna de data
+      query += ' AND data_c >= ?';
+    }
+  
+
+  connection.query(query,[dataParametro], (err, results) => {
     if (err) {
       connection.destroy();
       res.status(500).send('Erro: ' + err);
@@ -52,11 +64,10 @@ app.get('/logs', (req, res) => {
 app.post('/set_log', (req, res) => {
 
   const {client, dados} = req.body;
-
-
   const dataAtual = new Date();
 
-  connection = connectionRequest()
+  connection = connectionRequest();
+
   // SQL para inserção
   const query = 'INSERT INTO logs (data_c, server, dados) VALUES ( ?, ?, ?)';
 

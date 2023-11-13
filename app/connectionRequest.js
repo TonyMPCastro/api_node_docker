@@ -6,7 +6,7 @@ module.exports = function () {
                                             user:"root",
                                             password:"123",
                                             database:"myDB",
-                                            port:'3308'
+                                            port:'3306'
                                         });
     //Instantiate the connection
     conex.connect(function (err) {
