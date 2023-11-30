@@ -3,7 +3,8 @@ CREATE TABLE `logs` (
   `id` int NOT NULL,
   `data_c` date NOT NULL,
   `server` int NOT NULL,
-  `dados` text NOT NULL
+  `dados` text NOT NULL,
+  `status` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `logs` (`id`, `data_c`, `server`, `dados`) VALUES
